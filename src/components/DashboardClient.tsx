@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Users, BookOpen, GraduationCap, DollarSign, FileText, Calendar, TrendingUp, UserCheck } from 'lucide-react'

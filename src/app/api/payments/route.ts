@@ -15,7 +15,6 @@ export async function GET() {
           include: {
             student: {
               include: {
-                user: true,
                 class: true
               }
             }
@@ -47,14 +46,13 @@ export async function POST(request: NextRequest) {
         amount: parseFloat(amount),
         paymentMethod,
         notes,
-        collectedBy: user.id
+        receivedBy: user.id
       },
       include: {
         fee: {
           include: {
             student: {
               include: {
-                user: true,
                 class: true
               }
             }
@@ -73,7 +71,7 @@ export async function POST(request: NextRequest) {
       where: { id: feeId }
     })
 
-    if (fee && totalPaid._sum.amount >= fee.amount) {
+    if (fee && (totalPaid._sum.amount ?? 0) >= fee.amount) {
       await prisma.fee.update({
         where: { id: feeId },
         data: { status: 'PAID' }

@@ -69,7 +69,7 @@ export default async function EditFeePage({ params }: { params: { id: string } }
             <select
               id="month"
               name="month"
-              defaultValue={fee.month}
+              defaultValue={fee.month ?? ""}
               required
               className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
             >

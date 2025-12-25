@@ -22,7 +22,6 @@ export async function GET(request: NextRequest) {
       include: {
         student: {
           include: {
-            user: true,
             class: true
           }
         },
@@ -64,7 +63,6 @@ export async function POST(request: NextRequest) {
       },
       create: {
         studentId,
-        classId,
         date: new Date(date),
         status,
         teacherId: user.teacher?.id
@@ -72,7 +70,6 @@ export async function POST(request: NextRequest) {
       include: {
         student: {
           include: {
-            user: true,
             class: true
           }
         },

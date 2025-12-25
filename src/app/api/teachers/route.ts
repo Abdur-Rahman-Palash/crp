@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const { name, email, password, subject, classIds } = await request.json()
+    const { name, email, password, subjects, classIds } = await request.json()
 
     // Create user account first
     const hashedPassword = await bcrypt.hash(password, 10)
@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
     const teacher = await prisma.teacher.create({
       data: {
         userId: newUser.id,
-        subject,
+        subjects,
         classes: {
           connect: classIds?.map((id: string) => ({ id })) || []
         }

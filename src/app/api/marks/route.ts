@@ -22,7 +22,6 @@ export async function GET(request: NextRequest) {
       include: {
         student: {
           include: {
-            user: true,
             class: true
           }
         },
@@ -54,7 +53,6 @@ export async function POST(request: NextRequest) {
     const mark = await prisma.mark.create({
       data: {
         studentId,
-        classId,
         subject,
         marks: parseFloat(marks),
         examType,
@@ -64,7 +62,6 @@ export async function POST(request: NextRequest) {
       include: {
         student: {
           include: {
-            user: true,
             class: true
           }
         },

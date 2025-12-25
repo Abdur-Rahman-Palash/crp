@@ -13,7 +13,6 @@ export async function GET() {
       include: {
         student: {
           include: {
-            user: true,
             class: true
           }
         }
@@ -48,7 +47,6 @@ export async function POST(request: NextRequest) {
       include: {
         student: {
           include: {
-            user: true,
             class: true
           }
         }

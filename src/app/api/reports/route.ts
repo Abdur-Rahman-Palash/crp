@@ -91,7 +91,6 @@ async function getFeesReport() {
     include: {
       student: {
         include: {
-          user: true,
           class: true
         }
       },
@@ -111,7 +110,6 @@ async function getAttendanceReport() {
     include: {
       student: {
         include: {
-          user: true,
           class: true
         }
       },
@@ -135,7 +133,6 @@ async function getMarksReport() {
     include: {
       student: {
         include: {
-          user: true,
           class: true
         }
       },

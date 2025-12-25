@@ -76,7 +76,7 @@ export function DashboardClient({ cards }: DashboardClientProps) {
         animate="show"
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
       >
-        {cards.map((card, index) => (
+        {cards.map((card, _index) => (
           <motion.div key={card.title} variants={item}>
             <Link href={card.href}>
               <div className={`card ${getColor(card.title)} text-white shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 cursor-pointer`}>

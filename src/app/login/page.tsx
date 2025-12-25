@@ -10,7 +10,7 @@ export default function LoginPage() {
     setError('')
     try {
       await login(formData)
-    } catch (err) {
+    } catch (_err) {
       setError('Invalid credentials')
     }
   }

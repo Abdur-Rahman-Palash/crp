@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Plus, Edit, Trash2, Users, Search, Filter } from 'lucide-react'
+import { Plus, Edit, Trash2, Users } from 'lucide-react'
 
 interface Student {
   id: string

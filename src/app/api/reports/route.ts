@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url)
     const type = searchParams.get('type') || 'overview'
 
-    let reportData: any = {}
+    let reportData: Record<string, unknown> = {}
 
     switch (type) {
       case 'students':

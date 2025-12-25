@@ -13,8 +13,11 @@ export async function GET(request: NextRequest) {
     const classId = searchParams.get('classId')
     const subject = searchParams.get('subject')
 
-    const where: any = {}
-    if (classId) where.classId = classId
+    const where: {
+      student?: { classId?: string }
+      subject?: string
+    } = {}
+    if (classId) where.student = { classId }
     if (subject) where.subject = subject
 
     const marks = await prisma.mark.findMany({
@@ -48,7 +51,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const { studentId, classId, subject, marks, examType, remarks } = await request.json()
+    const { studentId, subject, marks, examType, remarks } = await request.json()
 
     const mark = await prisma.mark.create({
       data: {

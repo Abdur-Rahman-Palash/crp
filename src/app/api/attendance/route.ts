@@ -13,8 +13,11 @@ export async function GET(request: NextRequest) {
     const classId = searchParams.get('classId')
     const date = searchParams.get('date')
 
-    const where: any = {}
-    if (classId) where.classId = classId
+    const where: {
+      student?: { classId?: string }
+      date?: Date
+    } = {}
+    if (classId) where.student = { classId }
     if (date) where.date = new Date(date)
 
     const attendance = await prisma.attendance.findMany({
@@ -48,7 +51,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const { studentId, classId, date, status } = await request.json()
+    const { studentId, date, status } = await request.json()
 
     const attendance = await prisma.attendance.upsert({
       where: {

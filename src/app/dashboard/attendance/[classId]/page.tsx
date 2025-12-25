@@ -1,6 +1,7 @@
 import { getUser } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { redirect } from 'next/navigation'
+import Link from 'next/link'
 
 export default async function ClassAttendancePage({ params }: { params: { classId: string } }) {
   const user = await getUser()
@@ -76,7 +77,7 @@ export default async function ClassAttendancePage({ params }: { params: { classI
   return (
     <div className="p-6">
       <div className="flex items-center mb-6">
-        <a href="/dashboard/attendance" className="text-blue-600 hover:text-blue-900 mr-4">&larr; Back to Attendance</a>
+        <Link href="/dashboard/attendance" className="text-blue-600 hover:text-blue-900 mr-4">&larr; Back to Attendance</Link>
         <h1 className="text-3xl font-bold">Mark Attendance - {cls.name}</h1>
         {cls.section && <span className="ml-2 text-gray-600">Section: {cls.section}</span>}
       </div>

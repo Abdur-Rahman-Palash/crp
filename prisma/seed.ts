@@ -12,6 +12,14 @@ const adapter = new PrismaPg(pool)
 const prisma = new PrismaClient({ adapter })
 
 async function main() {
+  // Check if users already exist
+  const existingUsers = await prisma.user.count()
+  if (existingUsers > 0) {
+    console.log('Users already exist, skipping seed')
+    return
+  }
+
+  console.log('Seeding database...')
   // Create test users
   const adminPassword = await bcrypt.hash('admin123', 10)
   const accountantPassword = await bcrypt.hash('accountant123', 10)
